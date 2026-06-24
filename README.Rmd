@@ -1,15 +1,24 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # predictlm
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
-The goal of predictlm is to provide an R interface to PredictLM model
-checkpoints from Zero One Research. For more information please see the
-official website: <https://zerooneresearch.ai/models/>
+The goal of predictlm is to provide an R interface to PredictLM model checkpoints from Zero One Research. For more information please see the official website: https://zerooneresearch.ai/models/
 
 ## Installation
 
@@ -21,7 +30,7 @@ pak::pak('frankiethull/predictlm')
 
 ## Example
 
-``` r
+```{r example}
 library(predictlm)
 library(rsample)
 
@@ -35,7 +44,7 @@ test <- testing(corn_splits)
 
 ### Classification
 
-``` r
+```{r}
 fit_cls <- predictlm_fit(
   train |> dplyr::select(-type),
   train$type,
@@ -45,12 +54,11 @@ fit_cls <- predictlm_fit(
 class_preds <- predictlm_predict(fit_cls, test |> dplyr::select(-type))
 
 class_preds |> head()
-#> [1] "Sweet" "Sweet" "Sweet" "Sweet" "Sweet" "Sweet"
 ```
 
 ### Regression
 
-``` r
+```{r}
 fit_reg <- predictlm_fit(
   train |> dplyr::select(-height, -type),
   train$height,
@@ -61,5 +69,4 @@ fit_reg <- predictlm_fit(
 preds <- predictlm_predict(fit_reg, test |> dplyr::select(-height, -type))
 
 preds |> head()
-#> [1] 70.34669 58.83693 60.45285 57.99476 61.91698 65.20015
 ```

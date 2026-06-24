@@ -1,0 +1,10 @@
+Package: predictlm
+Title: reticulated PredictLM, a tabular foundation model from Zero One Research
+Version: 0.0.0.9000
+Authors@R: 
+    person("frank", "hull", , "frankiethull@proton.me", role = c("aut", "cre"))
+Description: provides R bindings to PredictLM, base and mini checkpoints. Base is a 26.2M-parameter transformer-based tabular foundation model that uses in-context learning to solve regression and classification in a single forward pass. mini is designed for edge devices.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
